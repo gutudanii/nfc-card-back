@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS user_sessions
+    ALTER COLUMN ip_address TYPE VARCHAR(255);

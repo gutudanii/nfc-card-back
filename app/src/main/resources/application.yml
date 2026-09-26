@@ -1,0 +1,53 @@
+server:
+  port: 8080
+  forward-headers-strategy: native
+
+security:
+  jwt:
+    secret: ${SECURITY_JWT_SECRET:change-me-in-prod}
+    access-token-seconds: ${SECURITY_JWT_ACCESS_TOKEN_SECONDS:900}
+    refresh-token-seconds: ${SECURITY_JWT_REFRESH_TOKEN_SECONDS:2592000}
+  rate-limit:
+    auth-max: ${SECURITY_RATE_LIMIT_AUTH_MAX:10}
+    tap-max: ${SECURITY_RATE_LIMIT_TAP_MAX:30}
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:nfc}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:gutudanii}
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+mail:
+  enabled: ${MAIL_ENABLED:false}
+  from: ${MAIL_FROM:no-reply@toollix.app}
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true

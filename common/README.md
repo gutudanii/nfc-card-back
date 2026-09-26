@@ -1,0 +1,1 @@
+Common utilities and cross-cutting concerns (security helpers, DTOs, exceptions). Add AccessGuard, Audit log helpers, EntitlementService interfaces here.
