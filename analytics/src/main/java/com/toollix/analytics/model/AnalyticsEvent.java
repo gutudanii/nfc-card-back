@@ -1,5 +1,7 @@
 package com.toollix.analytics.model;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import jakarta.persistence.*;
 import java.time.Instant;
 
@@ -22,14 +24,42 @@ public class AnalyticsEvent {
     @Column(name = "occurred_at")
     private Instant occurredAt = Instant.now();
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "meta", columnDefinition = "jsonb")
     private String meta;
 
-    public AnalyticsEvent() {}
+    public AnalyticsEvent() {
+    }
 
-    public Long getId() { return id; }
-    public Long getProfileId() { return profileId; }
-    public Long getNfcCardId() { return nfcCardId; }
-    public String getEventType() { return eventType; }
-    public String getMeta() { return meta; }
+    public Long getId() {
+        return id;
+    }
+
+    public Long getProfileId() {
+        return profileId;
+    }
+
+    public Long getNfcCardId() {
+        return nfcCardId;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public Instant getOccurredAt() {
+        return occurredAt;
+    }
+
+    public String getMeta() {
+        return meta;
+    }
+
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
 }

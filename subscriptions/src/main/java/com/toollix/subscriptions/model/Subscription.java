@@ -25,17 +25,72 @@ public class Subscription {
     @Column(name = "expires_at")
     private Instant expiresAt;
 
-    public Subscription() {}
+    @Column(name = "tx_ref")
+    private String txRef;
 
-    public Long getId() { return id; }
-    public String getSubjectType() { return subjectType; }
-    public void setSubjectType(String subjectType) { this.subjectType = subjectType; }
-    public Long getSubjectId() { return subjectId; }
-    public void setSubjectId(Long subjectId) { this.subjectId = subjectId; }
-    public Long getPlanId() { return planId; }
-    public void setPlanId(Long planId) { this.planId = planId; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-    public Instant getExpiresAt() { return expiresAt; }
-    public void setExpiresAt(Instant expiresAt) { this.expiresAt = expiresAt; }
+    @Column(name = "activated_at")
+    private Instant activatedAt;
+
+    public Subscription() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getSubjectType() {
+        return subjectType;
+    }
+
+    public void setSubjectType(String subjectType) {
+        this.subjectType = subjectType;
+    }
+
+    public Long getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Long subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public Long getPlanId() {
+        return planId;
+    }
+
+    public void setPlanId(Long planId) {
+        this.planId = planId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Instant getExpiresAt() {
+        return expiresAt;
+    }
+
+    public void setExpiresAt(Instant expiresAt) {
+        this.expiresAt = expiresAt;
+    }
+
+    public String getTxRef() {
+        return txRef;
+    }
+
+    public void setTxRef(String txRef) {
+        this.txRef = txRef;
+    }
+
+    public Instant getActivatedAt() {
+        return activatedAt;
+    }
+
+    public void setActivatedAt(Instant activatedAt) {
+        this.activatedAt = activatedAt;
+    }
 }

@@ -1,36 +1,242 @@
 package com.toollix.organizations;
 
+import com.toollix.common.storage.FileStorageService;
 import com.toollix.organizations.model.Organization;
 import com.toollix.organizations.model.OrganizationMember;
 import com.toollix.organizations.model.Team;
+import com.toollix.organizations.repo.OrganizationMemberRepository;
 import com.toollix.organizations.repo.OrganizationRepository;
 import com.toollix.organizations.service.OrganizationService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Map;
+
+/**
+ * Organization management endpoints.
+ *
+ * Role enforcement:
+ * POST /orgs — any authenticated user (creates org, becomes OWNER)
+ * GET /orgs/my — authenticated user (returns their orgs)
+ * GET /orgs/{id} — org member only
+ * PUT /orgs/{id} — ADMIN or OWNER only (update name/slug/tagline/brandColor)
+ * POST /orgs/{id}/logo — ADMIN or OWNER only (upload logo)
+ * POST /orgs/{id}/members — ADMIN or OWNER only
+ * GET /orgs/{id}/members — any member
+ * PUT /orgs/{id}/members/{userId}/role — OWNER only (change role)
+ * DELETE /orgs/{id}/members/{userId} — ADMIN or OWNER only (remove member)
+ * POST /orgs/{id}/teams — ADMIN or OWNER only
+ */
 @RestController
 @RequestMapping("/orgs")
 public class OrganizationsController {
+
+    private static final Logger log = LoggerFactory.getLogger(OrganizationsController.class);
+
     private final OrganizationService service;
     private final OrganizationRepository repo;
-    public OrganizationsController(OrganizationService service, OrganizationRepository repo) { this.service = service; this.repo = repo; }
+    private final OrganizationMemberRepository memberRepo;
+    private final FileStorageService storageService;
 
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody Organization o) { return ResponseEntity.ok(service.create(o)); }
-
-    @GetMapping("/{slug}")
-    public ResponseEntity<?> get(@PathVariable String slug) { return repo.findBySlug(slug).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()); }
-
-    @PostMapping("/{orgId}/members")
-    public ResponseEntity<?> addMember(@PathVariable Long orgId, @RequestBody OrganizationMember member) {
-        return ResponseEntity.ok(service.addMember(orgId, member.getUserId(), member.getRole(), member.getDepartment()));
+    public OrganizationsController(OrganizationService service,
+            OrganizationRepository repo,
+            OrganizationMemberRepository memberRepo,
+            FileStorageService storageService) {
+        this.service = service;
+        this.repo = repo;
+        this.memberRepo = memberRepo;
+        this.storageService = storageService;
     }
 
+    // ─── Create org ───────────────────────────────────────────────────────────
+
+    @PostMapping
+    public ResponseEntity<?> create(
+            @Valid @RequestBody CreateOrgRequest req,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        log.info("[ORGS_CTRL] POST /orgs — name='{}' callerId={}", req.name(), callerId);
+
+        Organization o = new Organization();
+        o.setName(req.name());
+        o.setSlug(req.slug());
+        if (req.tagline() != null)
+            o.setTagline(req.tagline());
+        Organization saved = service.create(o, callerId);
+
+        log.info("[ORGS_CTRL] Org created — id={} slug={} ownerId={}", saved.getId(), saved.getSlug(), callerId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    // ─── My orgs ──────────────────────────────────────────────────────────────
+
+    @GetMapping("/my")
+    public ResponseEntity<?> myOrgs(@AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        var memberships = memberRepo.findByUserIdAndStatus(callerId, "ACTIVE");
+        var orgIds = memberships.stream().map(OrganizationMember::getOrgId).toList();
+        var orgs = repo.findAllById(orgIds);
+        return ResponseEntity.ok(orgs);
+    }
+
+    // ─── Get org by ID ────────────────────────────────────────────────────────
+
+    @GetMapping("/{orgId}")
+    public ResponseEntity<?> getById(@PathVariable("orgId") Long orgId,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        // Ensure caller is a member
+        boolean isMember = memberRepo.findByOrgIdAndUserIdAndStatus(orgId, callerId, "ACTIVE").isPresent();
+        if (!isMember)
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Not a member"));
+
+        return repo.findById(orgId)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // ─── Update org (branding / name) ─────────────────────────────────────────
+
+    @PutMapping("/{orgId}")
+    public ResponseEntity<?> update(@PathVariable("orgId") Long orgId,
+            @AuthenticationPrincipal String principal,
+            @RequestBody UpdateOrgRequest req) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isAdminOrOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires ADMIN or OWNER role"));
+
+        return repo.findById(orgId).map(o -> {
+            if (req.name() != null)
+                o.setName(req.name());
+            if (req.tagline() != null)
+                o.setTagline(req.tagline());
+            if (req.brandColor() != null)
+                o.setBrandColor(req.brandColor());
+            var saved = repo.save(o);
+            log.info("[ORGS_CTRL] PUT /orgs/{} updated by userId={}", orgId, callerId);
+            return ResponseEntity.ok(saved);
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // ─── Upload org logo ──────────────────────────────────────────────────────
+
+    @PostMapping("/{orgId}/logo")
+    public ResponseEntity<?> uploadLogo(@PathVariable("orgId") Long orgId,
+            @AuthenticationPrincipal String principal,
+            @RequestParam("file") MultipartFile file) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isAdminOrOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires ADMIN or OWNER role"));
+
+        return repo.findById(orgId).map(o -> {
+            String url = storageService.storeFile(file);
+            o.setLogoUrl(url);
+            repo.save(o);
+            log.info("[ORGS_CTRL] Logo uploaded orgId={} url={}", orgId, url);
+            return ResponseEntity.ok(Map.of("logoUrl", url));
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // ─── Members ──────────────────────────────────────────────────────────────
+
     @GetMapping("/{orgId}/members")
-    public ResponseEntity<?> members(@PathVariable Long orgId) { return ResponseEntity.ok(service.listMembers(orgId)); }
+    public ResponseEntity<?> members(@PathVariable("orgId") Long orgId,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        boolean isMember = memberRepo.findByOrgIdAndUserIdAndStatus(orgId, callerId, "ACTIVE").isPresent();
+        if (!isMember)
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Not a member"));
+
+        var list = service.listMembers(orgId);
+        return ResponseEntity.ok(list);
+    }
+
+    @PostMapping("/{orgId}/members")
+    public ResponseEntity<?> addMember(
+            @PathVariable("orgId") Long orgId,
+            @Valid @RequestBody AddMemberRequest req,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isAdminOrOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires ADMIN or OWNER role"));
+
+        log.info("[ORGS_CTRL] POST /orgs/{}/members — adding userId={} role={} by callerId={}", orgId, req.userId(),
+                req.role(), callerId);
+        OrganizationMember member = service.addMember(orgId, req.userId(), req.role(), req.department());
+        return ResponseEntity.status(HttpStatus.CREATED).body(member);
+    }
+
+    @DeleteMapping("/{orgId}/members/{userId}")
+    public ResponseEntity<?> removeMember(@PathVariable("orgId") Long orgId,
+            @PathVariable("userId") Long userId,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isAdminOrOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires ADMIN or OWNER role"));
+
+        memberRepo.findByOrgIdAndUserIdAndStatus(orgId, userId, "ACTIVE").ifPresent(m -> {
+            m.setStatus("REMOVED");
+            memberRepo.save(m);
+        });
+        log.info("[ORGS_CTRL] Member userId={} removed from orgId={} by callerId={}", userId, orgId, callerId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{orgId}/members/{userId}/role")
+    public ResponseEntity<?> updateRole(@PathVariable("orgId") Long orgId,
+            @PathVariable("userId") Long userId,
+            @AuthenticationPrincipal String principal,
+            @RequestBody RoleRequest req) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires OWNER role"));
+
+        return memberRepo.findByOrgIdAndUserIdAndStatus(orgId, userId, "ACTIVE").map(m -> {
+            m.setRole(req.role());
+            memberRepo.save(m);
+            log.info("[ORGS_CTRL] Role updated userId={} orgId={} role={}", userId, orgId, req.role());
+            return ResponseEntity.ok(m);
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // ─── Teams ────────────────────────────────────────────────────────────────
 
     @PostMapping("/{orgId}/teams")
-    public ResponseEntity<?> createTeam(@PathVariable Long orgId, @RequestBody Team team) {
-        return ResponseEntity.ok(service.createTeam(orgId, team.getName()));
+    public ResponseEntity<?> createTeam(
+            @PathVariable("orgId") Long orgId,
+            @Valid @RequestBody CreateTeamRequest req,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isAdminOrOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires ADMIN or OWNER role"));
+
+        log.info("[ORGS_CTRL] POST /orgs/{}/teams — name='{}' by callerId={}", orgId, req.name(), callerId);
+        Team team = service.createTeam(orgId, req.name());
+        return ResponseEntity.status(HttpStatus.CREATED).body(team);
+    }
+
+    // ─── Request records ──────────────────────────────────────────────────────
+
+    public record CreateOrgRequest(@NotBlank String name, @NotBlank String slug, String tagline) {
+    }
+
+    public record UpdateOrgRequest(String name, String tagline, String brandColor) {
+    }
+
+    public record AddMemberRequest(@NotNull Long userId, String role, String department) {
+    }
+
+    public record RoleRequest(@NotBlank String role) {
+    }
+
+    public record CreateTeamRequest(@NotBlank String name) {
     }
 }

@@ -1,0 +1,306 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] nfc-backend                                                        [pom]
+[INFO] common                                                             [jar]
+[INFO] users                                                              [jar]
+[INFO] auth                                                               [jar]
+[INFO] profiles                                                           [jar]
+[INFO] subscriptions                                                      [jar]
+[INFO] nfc                                                                [jar]
+[INFO] analytics                                                          [jar]
+[INFO] orders                                                             [jar]
+[INFO] organizations                                                      [jar]
+[INFO] admin                                                              [jar]
+[INFO] app                                                                [jar]
+[INFO] 
+[INFO] ----------------------< com.toollix:nfc-backend >-----------------------
+[INFO] Building nfc-backend 0.1.0                                        [1/12]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] -------------------------< com.toollix:common >-------------------------
+[INFO] Building common 0.1.0                                             [2/12]
+[INFO]   from common/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ common ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/common/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ common ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/common/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ common ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ common ---
+[INFO] 
+[INFO] -------------------------< com.toollix:users >--------------------------
+[INFO] Building users 0.1.0                                              [3/12]
+[INFO]   from users/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ users ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/users/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ users ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ users ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/users/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ users ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ users ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ users ---
+[INFO] 
+[INFO] --------------------------< com.toollix:auth >--------------------------
+[INFO] Building auth 0.1.0                                               [4/12]
+[INFO]   from auth/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ auth ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/auth/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ auth ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ auth ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/auth/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ auth ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ auth ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ auth ---
+[INFO] 
+[INFO] ------------------------< com.toollix:profiles >------------------------
+[INFO] Building profiles 0.1.0                                           [5/12]
+[INFO]   from profiles/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ profiles ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/profiles/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ profiles ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ profiles ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/profiles/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ profiles ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ profiles ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ profiles ---
+[INFO] 
+[INFO] ---------------------< com.toollix:subscriptions >----------------------
+[INFO] Building subscriptions 0.1.0                                      [6/12]
+[INFO]   from subscriptions/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ subscriptions ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/subscriptions/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ subscriptions ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ subscriptions ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/subscriptions/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ subscriptions ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ subscriptions ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ subscriptions ---
+[INFO] 
+[INFO] --------------------------< com.toollix:nfc >---------------------------
+[INFO] Building nfc 0.1.0                                                [7/12]
+[INFO]   from nfc/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ nfc ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/nfc/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ nfc ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ nfc ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/nfc/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ nfc ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ nfc ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ nfc ---
+[INFO] 
+[INFO] -----------------------< com.toollix:analytics >------------------------
+[INFO] Building analytics 0.1.0                                          [8/12]
+[INFO]   from analytics/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ analytics ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/analytics/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ analytics ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ analytics ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/analytics/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ analytics ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ analytics ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ analytics ---
+[INFO] 
+[INFO] -------------------------< com.toollix:orders >-------------------------
+[INFO] Building orders 0.1.0                                             [9/12]
+[INFO]   from orders/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ orders ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/orders/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ orders ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ orders ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/orders/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ orders ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ orders ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ orders ---
+[INFO] 
+[INFO] ---------------------< com.toollix:organizations >----------------------
+[INFO] Building organizations 0.1.0                                     [10/12]
+[INFO]   from organizations/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ organizations ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ organizations ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ organizations ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ organizations ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ organizations ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ organizations ---
+[INFO] 
+[INFO] -------------------------< com.toollix:admin >--------------------------
+[INFO] Building admin 0.1.0                                             [11/12]
+[INFO]   from admin/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ admin ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/admin/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ admin ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ admin ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/admin/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ admin ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ admin ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ admin ---
+[INFO] 
+[INFO] --------------------------< com.toollix:app >---------------------------
+[INFO] Building app 0.1.0                                               [12/12]
+[INFO]   from app/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 11 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ app ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/gutudanielgeleta/Documents/NFC/nfc-backend/app/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ app ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ app ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ app ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for nfc-backend 0.1.0:
+[INFO] 
+[INFO] nfc-backend ........................................ SUCCESS [  0.002 s]
+[INFO] common ............................................. SUCCESS [  0.939 s]
+[INFO] users .............................................. SUCCESS [  0.041 s]
+[INFO] auth ............................................... SUCCESS [  0.075 s]
+[INFO] profiles ........................................... SUCCESS [  0.026 s]
+[INFO] subscriptions ...................................... SUCCESS [  0.043 s]
+[INFO] nfc ................................................ SUCCESS [  0.028 s]
+[INFO] analytics .......................................... SUCCESS [  0.026 s]
+[INFO] orders ............................................. SUCCESS [  0.021 s]
+[INFO] organizations ...................................... SUCCESS [  0.023 s]
+[INFO] admin .............................................. SUCCESS [  0.018 s]
+[INFO] app ................................................ SUCCESS [  0.128 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.601 s
+[INFO] Finished at: 2026-09-26T11:58:57+03:00
+[INFO] ------------------------------------------------------------------------

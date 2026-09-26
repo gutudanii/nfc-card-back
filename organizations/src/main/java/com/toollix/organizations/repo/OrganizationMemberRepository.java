@@ -8,6 +8,10 @@ import java.util.Optional;
 
 public interface OrganizationMemberRepository extends JpaRepository<OrganizationMember, Long> {
     List<OrganizationMember> findByOrgIdAndStatus(Long orgId, String status);
+
     List<OrganizationMember> findByUserIdAndStatus(Long userId, String status);
+
     Optional<OrganizationMember> findByOrgIdAndUserId(Long orgId, Long userId);
+
+    Optional<OrganizationMember> findByOrgIdAndUserIdAndStatus(Long orgId, Long userId, String status);
 }

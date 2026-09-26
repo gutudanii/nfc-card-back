@@ -21,7 +21,7 @@ public class User {
     private String passwordHash;
 
     @Column(name = "status")
-    private String status = "UNVERIFIED";
+    private String status = "ACTIVE";
 
     @Column(name = "created_at")
     private Instant createdAt = Instant.now();

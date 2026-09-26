@@ -22,12 +22,12 @@ public class JwtTokenProvider {
     private final long accessTokenValiditySeconds;
 
     public JwtTokenProvider(@Value("${security.jwt.secret:change-me-in-prod}") String secret,
-                            @Value("${security.jwt.access-token-seconds:900}") long accessTokenValiditySeconds) {
+            @Value("${security.jwt.access-token-seconds:900}") long accessTokenValiditySeconds) {
         this.secret = secret.getBytes();
         this.accessTokenValiditySeconds = accessTokenValiditySeconds;
     }
 
-    public String createAccessToken(String subject, String tokenVersion) {
+    public String createAccessToken(String subject, String tokenVersion, String email) {
         try {
             JWSSigner signer = new MACSigner(secret);
             JWTClaimsSet claims = new JWTClaimsSet.Builder()
@@ -36,6 +36,7 @@ public class JwtTokenProvider {
                     .issueTime(Date.from(Instant.now()))
                     .expirationTime(Date.from(Instant.now().plusSeconds(accessTokenValiditySeconds)))
                     .claim("tv", tokenVersion)
+                    .claim("email", email)
                     .jwtID(UUID.randomUUID().toString())
                     .build();
 
