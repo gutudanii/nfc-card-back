@@ -72,13 +72,10 @@ public class SecurityConfig {
                         .requestMatchers("/tap/**").permitAll()
                         .requestMatchers("/p/**").permitAll() // public profile pages + analytics events
                         .requestMatchers("/uploads/**").permitAll() // static file serving
-<<<<<<< HEAD
-=======
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/orgs/public/**").permitAll() // org
                                                                                                                  // branded
                                                                                                                  // public
                                                                                                                  // profiles
->>>>>>> 82aa1f0 (Initial commit)
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/webjars/**")
                         .permitAll()
                         .requestMatchers("/actuator/health").permitAll()

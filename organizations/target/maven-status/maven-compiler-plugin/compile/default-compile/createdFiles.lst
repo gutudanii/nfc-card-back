@@ -10,5 +10,6 @@ com/toollix/organizations/service/OrganizationService.class
 com/toollix/organizations/repo/OrganizationRepository.class
 com/toollix/organizations/model/Organization.class
 com/toollix/organizations/OrganizationsController$CreateOrgRequest.class
+com/toollix/organizations/OrganizationsController$InviteRequest.class
 com/toollix/organizations/OrganizationsController$UpdateOrgRequest.class
 com/toollix/organizations/repo/TeamRepository.class

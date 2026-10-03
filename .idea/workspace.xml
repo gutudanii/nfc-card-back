@@ -7,7 +7,134 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52d3fac7-8016-4719-8e40-15f36af6795e" name="Changes" comment="" />
+    <list default="true" id="52d3fac7-8016-4719-8e40-15f36af6795e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/toollix/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/toollix/admin/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/admin-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/admin-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/target/classes/com/toollix/admin/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/target/classes/com/toollix/admin/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/src/main/java/com/toollix/analytics/AnalyticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/src/main/java/com/toollix/analytics/AnalyticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/src/main/java/com/toollix/analytics/model/AnalyticsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/src/main/java/com/toollix/analytics/model/AnalyticsEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/target/analytics-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/target/analytics-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/AnalyticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/AnalyticsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/model/AnalyticsEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/model/AnalyticsEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/repo/AnalyticsEventRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/repo/AnalyticsEventRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/worker/AnalyticsWorker.class" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/target/classes/com/toollix/analytics/worker/AnalyticsWorker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/app-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/app-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/com/toollix/app/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/com/toollix/app/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/com/toollix/app/OpenApiConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/com/toollix/app/OpenApiConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/surefire-reports/TEST-com.toollix.app.RedisTestcontainersTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/surefire-reports/TEST-com.toollix.app.SmokeIntegrationTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/surefire-reports/com.toollix.app.RedisTestcontainersTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/surefire-reports/com.toollix.app.SmokeIntegrationTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/test-classes/com/toollix/app/RedisTestcontainersTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/test-classes/com/toollix/app/RedisTestcontainersTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/test-classes/com/toollix/app/SmokeIntegrationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/test-classes/com/toollix/app/SmokeIntegrationTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/toollix/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/toollix/auth/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/toollix/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/toollix/auth/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/test/java/com/toollix/auth/AuthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/test/java/com/toollix/auth/AuthServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/dto/SessionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/dto/SessionDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/model/UserSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/model/UserSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/model/VerificationToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/model/VerificationToken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/repo/UserSessionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/repo/UserSessionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/repo/VerificationTokenRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/repo/VerificationTokenRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/service/AuthService$LoginResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/service/AuthService$LoginResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/classes/com/toollix/auth/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/surefire-reports/TEST-com.toollix.auth.AuthServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/surefire-reports/com.toollix.auth.AuthServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/target/test-classes/com/toollix/auth/AuthServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/auth/target/test-classes/com/toollix/auth/AuthServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/entitlement/EntitlementServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/entitlement/EntitlementServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/mail/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/mail/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/mail/NoopEmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/mail/NoopEmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/mail/SmtpEmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/mail/SmtpEmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/web/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/toollix/common/web/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/audit/AuditLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/audit/AuditLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/audit/AuditService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/audit/AuditService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/entitlement/EntitlementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/entitlement/EntitlementService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/entitlement/EntitlementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/entitlement/EntitlementServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/entitlement/Feature.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/entitlement/Feature.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/mail/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/mail/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/mail/NoopEmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/mail/NoopEmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/mail/SmtpEmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/mail/SmtpEmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/JwtTokenProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/JwtTokenProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/RateLimitFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/RateLimitFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/RateLimitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/RateLimitService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/storage/FileStorageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/storage/FileStorageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/storage/FileStorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/storage/FileStorageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/web/ApiException.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/web/ApiException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/web/GlobalExceptionHandler$AccessDeniedException.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/web/GlobalExceptionHandler$AccessDeniedException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/toollix/common/web/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/toollix/common/web/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/common-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/common-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/NfcController$AssignReq.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/NfcController$AssignReq.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/NfcController.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/NfcController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/model/NfcAssignment.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/model/NfcAssignment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/model/NfcCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/model/NfcCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/repo/NfcAssignmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/repo/NfcAssignmentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/repo/NfcCardRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/repo/NfcCardRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/service/DbEntitlementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/service/DbEntitlementService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/service/NfcService.class" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/classes/com/toollix/nfc/service/NfcService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nfc/target/nfc-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nfc/target/nfc-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/src/main/java/com/toollix/orders/OrdersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/main/java/com/toollix/orders/OrdersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/OrdersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/OrdersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/model/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/model/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/repo/OrderRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/repo/OrderRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/orders/target/classes/com/toollix/orders/service/OrderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/orders/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/target/orders-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/orders/target/orders-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/src/main/java/com/toollix/organizations/OrganizationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/src/main/java/com/toollix/organizations/OrganizationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/src/main/java/com/toollix/organizations/security/AccessGuard.java" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/src/main/java/com/toollix/organizations/security/AccessGuard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$AddMemberRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$AddMemberRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$CreateOrgRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$CreateOrgRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$InviteRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$InviteRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$UpdateOrgRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController$UpdateOrgRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/OrganizationsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/model/Organization.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/model/Organization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/model/OrganizationMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/model/OrganizationMember.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/model/Team.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/model/Team.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/repo/OrganizationMemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/repo/OrganizationMemberRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/repo/OrganizationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/repo/OrganizationRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/repo/TeamRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/repo/TeamRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/security/AccessGuard.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/security/AccessGuard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/service/OrganizationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/classes/com/toollix/organizations/service/OrganizationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organizations/target/organizations-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/organizations/target/organizations-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/PortfolioController$PortfolioItemRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/PortfolioController$PortfolioItemRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/PortfolioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/PortfolioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController$LinkRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController$LinkRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController$ProfileUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController$ProfileUpdate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController$VisibilityRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController$VisibilityRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/ProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/model/ContactLink.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/model/ContactLink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/model/PortfolioItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/model/PortfolioItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/model/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/model/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/repo/ContactLinkRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/repo/ContactLinkRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/repo/PortfolioItemRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/repo/PortfolioItemRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/repo/ProfileRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/repo/ProfileRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/service/ProfileService.class" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/classes/com/toollix/profiles/service/ProfileService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/target/profiles-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/target/profiles-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/src/main/java/com/toollix/subscriptions/service/SubscriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/src/main/java/com/toollix/subscriptions/service/SubscriptionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/PlansController.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/PlansController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/SubscriptionsController$CheckoutRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/SubscriptionsController$CheckoutRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/SubscriptionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/SubscriptionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/model/Plan.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/model/Plan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/model/Subscription.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/model/Subscription.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/repo/PlanRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/repo/PlanRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/repo/SubscriptionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/repo/SubscriptionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/service/ChapaPaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/service/ChapaPaymentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/service/SubscriptionService$CheckoutResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/service/SubscriptionService$CheckoutResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/service/SubscriptionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/classes/com/toollix/subscriptions/service/SubscriptionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/target/subscriptions-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/target/subscriptions-0.1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/src/main/java/com/toollix/users/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/users/src/main/java/com/toollix/users/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/target/classes/com/toollix/users/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/users/target/classes/com/toollix/users/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/target/classes/com/toollix/users/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/users/target/classes/com/toollix/users/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/target/classes/com/toollix/users/repo/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/users/target/classes/com/toollix/users/repo/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/target/users-0.1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/users/target/users-0.1.0.jar" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,23 +180,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gutudanielgeleta/Documents/NFC/nfc-backend/auth&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.Application.executor": "Run",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "restore-and-merge",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/gutudanielgeleta/Documents/NFC/nfc-backend/auth",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/auth" />

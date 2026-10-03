@@ -70,44 +70,23 @@ public class SubscriptionService {
     /**
      * Verifies by txRef (used by Chapa callback). Falls back to subscriptionId
      * lookup.
-<<<<<<< HEAD
-=======
      * On success:
      * 1. Marks the subscription ACTIVE with an expiry (30 days for monthly, 365 for
      * annual/default).
      * 2. Supersedes any previously ACTIVE subscriptions for the same subject so
      * only one is live.
      * 3. Records a detailed audit trail.
->>>>>>> 82aa1f0 (Initial commit)
      */
     public boolean verifyCheckout(String txRef, Long subscriptionId) {
         log.info("[SUBSCRIPTION_SVC] verifyCheckout txRef={} subId={}", txRef, subscriptionId);
         boolean isSuccess = chapaPaymentService.verifyChapaPayment(txRef);
 
         if (isSuccess) {
-<<<<<<< HEAD
-            // Try to find by txRef first (more reliable), fall back to id
-=======
             // Resolve subscription — txRef is more reliable (immutable after creation)
->>>>>>> 82aa1f0 (Initial commit)
             Optional<Subscription> subOpt = repo.findByTxRef(txRef);
             Subscription s = subOpt.orElseGet(() -> repo.findById(subscriptionId)
                     .orElseThrow(() -> new RuntimeException("Subscription not found: " + subscriptionId)));
 
-<<<<<<< HEAD
-            s.setStatus("ACTIVE");
-            s.setActivatedAt(Instant.now());
-            // Grant 1-year expiry for annual plan, 30 days for monthly
-            s.setExpiresAt(Instant.now().plus(365, ChronoUnit.DAYS));
-            repo.save(s);
-            try {
-                auditService.record("subscription.activate", "system", "subId=" + s.getId() + " txRef=" + txRef);
-            } catch (Exception ignored) {
-            }
-            log.info("[SUBSCRIPTION_SVC] Subscription {} activated for userId={}", s.getId(), s.getSubjectId());
-            return true;
-        }
-=======
             // Supersede any existing ACTIVE subscriptions for the same subject
             List<Subscription> existing = repo.findBySubjectTypeAndSubjectIdOrderByIdDesc(
                     s.getSubjectType(), s.getSubjectId());
@@ -142,7 +121,6 @@ public class SubscriptionService {
         }
 
         log.warn("[SUBSCRIPTION_SVC] ❌ Chapa verification failed for txRef={}", txRef);
->>>>>>> 82aa1f0 (Initial commit)
         return false;
     }
 

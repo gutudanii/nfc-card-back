@@ -67,8 +67,6 @@ public class OrdersController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-<<<<<<< HEAD
-=======
     // ─── Organization NFC Ordering ──────────────────────────────────────────
 
     @PostMapping("/org/{orgId}")
@@ -97,7 +95,6 @@ public class OrdersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
->>>>>>> 82aa1f0 (Initial commit)
     // ─────────────────────────────────────────────────────────────────────────
     // Also allow /me/orders as alternative path
     // ─────────────────────────────────────────────────────────────────────────
@@ -107,13 +104,10 @@ public class OrdersController {
             @NotNull Integer quantity,
             @NotNull Long amount) {
     }
-<<<<<<< HEAD
-=======
 
     public record OrgOrderRequest(
             @NotBlank String productType,
             @NotNull Long amount,
             @NotNull Long targetUserId) {
     }
->>>>>>> 82aa1f0 (Initial commit)
 }

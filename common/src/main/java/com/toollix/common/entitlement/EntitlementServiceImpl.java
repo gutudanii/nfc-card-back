@@ -1,20 +1,6 @@
 package com.toollix.common.entitlement;
 
 import com.toollix.common.web.ApiException;
-<<<<<<< HEAD
-import org.springframework.http.HttpStatus;
-
-public class EntitlementServiceImpl implements EntitlementService {
-
-    @Override
-    public boolean hasFeatureForProfile(Long profileId, String feature) {
-        return false;
-    }
-
-    @Override
-    public boolean hasFeatureForOrganization(Long organizationId, String feature) {
-        return false;
-=======
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -75,14 +61,10 @@ public class EntitlementServiceImpl implements EntitlementService {
             log.warn("[ENTITLEMENT] hasFeatureForProfile error profileId={}: {}", profileId, e.getMessage());
             return false;
         }
->>>>>>> 82aa1f0 (Initial commit)
     }
 
     @Override
     public void requireProfileFeature(Long profileId, String feature) {
-<<<<<<< HEAD
-        throw new ApiException(HttpStatus.FORBIDDEN.value(), "feature_not_allowed");
-=======
         if (!hasFeatureForProfile(profileId, feature)) {
             log.info("[ENTITLEMENT] access DENIED profileId={} feature={}", profileId, feature);
             throw new ApiException(HttpStatus.PAYMENT_REQUIRED.value(),
@@ -113,19 +95,14 @@ public class EntitlementServiceImpl implements EntitlementService {
             log.warn("[ENTITLEMENT] hasFeatureForOrganization error orgId={}: {}", organizationId, e.getMessage());
             return false;
         }
->>>>>>> 82aa1f0 (Initial commit)
     }
 
     @Override
     public void requireOrganizationFeature(Long organizationId, String feature) {
-<<<<<<< HEAD
-        throw new ApiException(HttpStatus.FORBIDDEN.value(), "feature_not_allowed");
-=======
         if (!hasFeatureForOrganization(organizationId, feature)) {
             log.info("[ENTITLEMENT] org access DENIED orgId={} feature={}", organizationId, feature);
             throw new ApiException(HttpStatus.PAYMENT_REQUIRED.value(),
                     "upgrade_required: organization feature '" + feature + "' requires an active subscription");
         }
->>>>>>> 82aa1f0 (Initial commit)
     }
 }

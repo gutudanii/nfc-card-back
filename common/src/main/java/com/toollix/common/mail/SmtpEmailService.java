@@ -1,36 +1,22 @@
 package com.toollix.common.mail;
 
-<<<<<<< HEAD
-=======
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
->>>>>>> 82aa1f0 (Initial commit)
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-<<<<<<< HEAD
-import org.springframework.stereotype.Service;
-
-=======
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 
->>>>>>> 82aa1f0 (Initial commit)
 @Service
 @ConditionalOnProperty(prefix = "mail", name = "enabled", havingValue = "true")
 public class SmtpEmailService implements EmailService {
     private static final Logger log = LoggerFactory.getLogger(SmtpEmailService.class);
 
-<<<<<<< HEAD
-    private final String from;
-
-    public SmtpEmailService(@Value("${mail.from:no-reply@toollix.app}") String from) {
-        this.from = from;
-=======
     private final JavaMailSender mailSender;
     private final String from;
     private final String frontendUrl;
@@ -42,14 +28,10 @@ public class SmtpEmailService implements EmailService {
         this.mailSender = mailSender;
         this.from = from;
         this.frontendUrl = frontendUrl;
->>>>>>> 82aa1f0 (Initial commit)
     }
 
     @Override
     public void sendVerification(String toEmail, String verificationToken) {
-<<<<<<< HEAD
-        log.info("[smtp-email] from={} to={} verificationToken={}", from, toEmail, verificationToken);
-=======
         String link = frontendUrl + "/verify?token=" + verificationToken;
         String subject = "Verify your Toollix Account";
         String html = """
@@ -310,6 +292,5 @@ public class SmtpEmailService implements EmailService {
                 .formatted(link, link, link);
 
         sendHtml(toEmail, subject, html);
->>>>>>> 82aa1f0 (Initial commit)
     }
 }
