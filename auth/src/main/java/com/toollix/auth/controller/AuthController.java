@@ -149,8 +149,6 @@ public class AuthController {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-<<<<<<< HEAD
-=======
     // Forgot / Reset password
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -170,7 +168,6 @@ public class AuthController {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
->>>>>>> 82aa1f0 (Initial commit)
     // Request / Response records — Bean Validation annotations are the first
     // line of defense; GlobalExceptionHandler renders them as 400 responses.
     // ─────────────────────────────────────────────────────────────────────────
@@ -194,8 +191,6 @@ public class AuthController {
     public record VerifyRequest(@NotBlank String token) {
     }
 
-<<<<<<< HEAD
-=======
     public record ForgotPasswordRequest(@NotBlank @Email String email) {
     }
 
@@ -204,7 +199,6 @@ public class AuthController {
             @NotBlank @Size(min = 8, message = "password must be at least 8 characters") String password) {
     }
 
->>>>>>> 82aa1f0 (Initial commit)
     // ─────────────────────────────────────────────────────────────────────────
     // Helpers
     // ─────────────────────────────────────────────────────────────────────────

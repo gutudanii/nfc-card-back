@@ -109,10 +109,6 @@ public class AnalyticsController {
             AnalyticsEvent evt = new AnalyticsEvent();
             evt.setProfileId(profileId);
             evt.setEventType(eventType);
-<<<<<<< HEAD
-            eventRepo.save(evt);
-            log.debug("[ANALYTICS] Tracked {} for profileId={}", eventType, profileId);
-=======
 
             // Build meta JSON from extra payload fields (url, title, etc.)
             // We strip eventType from the extra fields and serialize the rest as JSONB.
@@ -131,7 +127,6 @@ public class AnalyticsController {
 
             eventRepo.save(evt);
             log.debug("[ANALYTICS] Tracked {} for profileId={} meta={}", eventType, profileId, evt.getMeta());
->>>>>>> 82aa1f0 (Initial commit)
             return ResponseEntity.ok(Map.of("status", "tracked"));
         } catch (Exception e) {
             log.error("[ANALYTICS] Failed to save event for username={}: {}", username, e.getMessage());
@@ -207,8 +202,6 @@ public class AnalyticsController {
 
         return ResponseEntity.ok(result);
     }
-<<<<<<< HEAD
-=======
 
     // ── Top clicked links ─────────────────────────────────────────────────────
 
@@ -256,5 +249,4 @@ public class AnalyticsController {
                 rows.size());
         return ResponseEntity.ok(rows);
     }
->>>>>>> 82aa1f0 (Initial commit)
 }

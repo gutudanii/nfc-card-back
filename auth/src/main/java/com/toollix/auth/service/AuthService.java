@@ -49,22 +49,15 @@ public class AuthService {
     private final AuditService auditService;
     private final long refreshTokenSeconds;
     private final long verificationSeconds;
-<<<<<<< HEAD
-=======
     private final org.springframework.jdbc.core.JdbcTemplate jdbc;
->>>>>>> 82aa1f0 (Initial commit)
 
     public AuthService(JwtTokenProvider jwtTokenProvider, UserSessionRepository sessionRepo,
             UserRepository userRepo, PasswordEncoder passwordEncoder,
             VerificationTokenRepository verificationRepo, EmailService emailService,
             AuditService auditService,
             @Value("${security.jwt.refresh-token-seconds:2592000}") long refreshTokenSeconds,
-<<<<<<< HEAD
-            @Value("${auth.verification-seconds:86400}") long verificationSeconds) {
-=======
             @Value("${auth.verification-seconds:86400}") long verificationSeconds,
             org.springframework.jdbc.core.JdbcTemplate jdbc) {
->>>>>>> 82aa1f0 (Initial commit)
         this.jwtTokenProvider = jwtTokenProvider;
         this.sessionRepo = sessionRepo;
         this.userRepo = userRepo;
@@ -74,10 +67,7 @@ public class AuthService {
         this.auditService = auditService;
         this.refreshTokenSeconds = refreshTokenSeconds;
         this.verificationSeconds = verificationSeconds;
-<<<<<<< HEAD
-=======
         this.jdbc = jdbc;
->>>>>>> 82aa1f0 (Initial commit)
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -153,8 +143,6 @@ public class AuthService {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-<<<<<<< HEAD
-=======
     // Password Reset
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -209,7 +197,6 @@ public class AuthService {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
->>>>>>> 82aa1f0 (Initial commit)
     // Login
     // ─────────────────────────────────────────────────────────────────────────
 
