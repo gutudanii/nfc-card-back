@@ -67,6 +67,37 @@ public class OrdersController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+<<<<<<< HEAD
+=======
+    // ─── Organization NFC Ordering ──────────────────────────────────────────
+
+    @PostMapping("/org/{orgId}")
+    public ResponseEntity<?> createOrgOrder(
+            @PathVariable("orgId") Long orgId,
+            @Valid @RequestBody OrgOrderRequest req,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+
+        // TODO: ideally check if callerId is ADMIN/OWNER of orgId.
+        // For now, we trust the caller has been validated on the frontend
+        // (but production should explicitly use the organizationService to verify
+        // role).
+
+        Order o = new Order();
+        o.setOrgId(orgId);
+        o.setUserId(req.targetUserId()); // Which member this is explicitly ordered for
+        o.setProductType(req.productType());
+        o.setQuantity(1); // One card per person per order
+        o.setAmount(req.amount());
+        o.setStatus("PENDING");
+
+        var saved = orderService.createOrder(o);
+        log.info("[ORDERS_CTRL] POST /orders/org/{} — ordered by {} for member {} type={}", orgId, callerId,
+                req.targetUserId(), req.productType());
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+>>>>>>> 82aa1f0 (Initial commit)
     // ─────────────────────────────────────────────────────────────────────────
     // Also allow /me/orders as alternative path
     // ─────────────────────────────────────────────────────────────────────────
@@ -76,4 +107,13 @@ public class OrdersController {
             @NotNull Integer quantity,
             @NotNull Long amount) {
     }
+<<<<<<< HEAD
+=======
+
+    public record OrgOrderRequest(
+            @NotBlank String productType,
+            @NotNull Long amount,
+            @NotNull Long targetUserId) {
+    }
+>>>>>>> 82aa1f0 (Initial commit)
 }

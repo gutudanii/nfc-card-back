@@ -1,0 +1,14 @@
+com/toollix/organizations/model/Team.class
+com/toollix/organizations/repo/OrganizationMemberRepository.class
+com/toollix/organizations/OrganizationsController$RoleRequest.class
+com/toollix/organizations/model/OrganizationMember.class
+com/toollix/organizations/security/AccessGuard.class
+com/toollix/organizations/OrganizationsController$AddMemberRequest.class
+com/toollix/organizations/OrganizationsController.class
+com/toollix/organizations/OrganizationsController$CreateTeamRequest.class
+com/toollix/organizations/service/OrganizationService.class
+com/toollix/organizations/repo/OrganizationRepository.class
+com/toollix/organizations/model/Organization.class
+com/toollix/organizations/OrganizationsController$CreateOrgRequest.class
+com/toollix/organizations/OrganizationsController$UpdateOrgRequest.class
+com/toollix/organizations/repo/TeamRepository.class

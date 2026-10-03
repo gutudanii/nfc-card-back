@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="analytics" />
+        <module name="app" />
+        <module name="subscriptions" />
+        <module name="common" />
+        <module name="auth" />
+        <module name="organizations" />
+        <module name="profiles" />
+        <module name="admin" />
+        <module name="nfc" />
+        <module name="orders" />
+        <module name="users" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="-parameters" />
+      <module name="analytics" options="-parameters" />
+      <module name="app" options="-parameters" />
+      <module name="auth" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="nfc" options="-parameters" />
+      <module name="orders" options="-parameters" />
+      <module name="organizations" options="-parameters" />
+      <module name="profiles" options="-parameters" />
+      <module name="subscriptions" options="-parameters" />
+      <module name="users" options="-parameters" />
+    </option>
+  </component>
+</project>

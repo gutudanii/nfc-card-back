@@ -149,6 +149,28 @@ public class AuthController {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+=======
+    // Forgot / Reset password
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@Valid @RequestBody ForgotPasswordRequest req) {
+        log.info("[AUTH_CTRL] POST /auth/forgot-password — email={}", req.email());
+        authService.forgotPassword(req.email());
+        // Always return 200 to prevent email enumeration
+        return ResponseEntity.ok(Map.of("status", "reset_email_sent"));
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@Valid @RequestBody ResetPasswordRequest req) {
+        log.info("[AUTH_CTRL] POST /auth/reset-password");
+        authService.resetPassword(req.token(), req.password());
+        return ResponseEntity.ok(Map.of("status", "password_reset_successful"));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+>>>>>>> 82aa1f0 (Initial commit)
     // Request / Response records — Bean Validation annotations are the first
     // line of defense; GlobalExceptionHandler renders them as 400 responses.
     // ─────────────────────────────────────────────────────────────────────────
@@ -172,6 +194,17 @@ public class AuthController {
     public record VerifyRequest(@NotBlank String token) {
     }
 
+<<<<<<< HEAD
+=======
+    public record ForgotPasswordRequest(@NotBlank @Email String email) {
+    }
+
+    public record ResetPasswordRequest(
+            @NotBlank String token,
+            @NotBlank @Size(min = 8, message = "password must be at least 8 characters") String password) {
+    }
+
+>>>>>>> 82aa1f0 (Initial commit)
     // ─────────────────────────────────────────────────────────────────────────
     // Helpers
     // ─────────────────────────────────────────────────────────────────────────

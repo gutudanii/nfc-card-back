@@ -28,11 +28,25 @@ public class AuthServiceTest {
         var encoder = new BCryptPasswordEncoder();
         var audit = new com.toollix.common.audit.AuditService(null);
 
+<<<<<<< HEAD
         var service = new AuthService(jwt, sess, userRepo, encoder, verificationRepo, email, audit, 2592000L, 3600L);
 
         // when repo save called, create a dummy user with id
         Mockito.when(userRepo.findByEmail("a@b.com")).thenReturn(Optional.empty());
         Mockito.when(userRepo.save(any())).thenAnswer(inv -> { var u = (com.toollix.users.model.User) inv.getArgument(0); u.setEmail("a@b.com"); return u; });
+=======
+        var jdbc = Mockito.mock(org.springframework.jdbc.core.JdbcTemplate.class);
+        var service = new AuthService(jwt, sess, userRepo, encoder, verificationRepo, email, audit, 2592000L, 3600L,
+                jdbc);
+
+        // when repo save called, create a dummy user with id
+        Mockito.when(userRepo.findByEmail("a@b.com")).thenReturn(Optional.empty());
+        Mockito.when(userRepo.save(any())).thenAnswer(inv -> {
+            var u = (com.toollix.users.model.User) inv.getArgument(0);
+            u.setEmail("a@b.com");
+            return u;
+        });
+>>>>>>> 82aa1f0 (Initial commit)
 
         var u = service.register("a@b.com", "pass");
         assertNotNull(u);

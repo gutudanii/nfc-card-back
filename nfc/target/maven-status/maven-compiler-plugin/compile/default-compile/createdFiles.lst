@@ -1,0 +1,8 @@
+com/toollix/nfc/repo/NfcAssignmentRepository.class
+com/toollix/nfc/service/NfcService.class
+com/toollix/nfc/NfcController$AssignReq.class
+com/toollix/nfc/model/NfcCard.class
+com/toollix/nfc/service/DbEntitlementService.class
+com/toollix/nfc/repo/NfcCardRepository.class
+com/toollix/nfc/NfcController.class
+com/toollix/nfc/model/NfcAssignment.class

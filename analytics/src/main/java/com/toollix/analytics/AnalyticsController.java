@@ -109,8 +109,29 @@ public class AnalyticsController {
             AnalyticsEvent evt = new AnalyticsEvent();
             evt.setProfileId(profileId);
             evt.setEventType(eventType);
+<<<<<<< HEAD
             eventRepo.save(evt);
             log.debug("[ANALYTICS] Tracked {} for profileId={}", eventType, profileId);
+=======
+
+            // Build meta JSON from extra payload fields (url, title, etc.)
+            // We strip eventType from the extra fields and serialize the rest as JSONB.
+            Map<String, String> metaFields = new java.util.LinkedHashMap<>(payload);
+            metaFields.remove("eventType");
+            if (!metaFields.isEmpty()) {
+                // Simple manual JSON serialize to avoid pulling in Jackson explicitly
+                StringBuilder sb = new StringBuilder("{");
+                metaFields.forEach((k, v) -> sb
+                        .append("\"").append(k.replace("\"", "\\\"")).append("\":")
+                        .append("\"").append(v == null ? "" : v.replace("\"", "\\\"")).append("\","));
+                sb.deleteCharAt(sb.length() - 1); // remove trailing comma
+                sb.append("}");
+                evt.setMeta(sb.toString());
+            }
+
+            eventRepo.save(evt);
+            log.debug("[ANALYTICS] Tracked {} for profileId={} meta={}", eventType, profileId, evt.getMeta());
+>>>>>>> 82aa1f0 (Initial commit)
             return ResponseEntity.ok(Map.of("status", "tracked"));
         } catch (Exception e) {
             log.error("[ANALYTICS] Failed to save event for username={}: {}", username, e.getMessage());
@@ -186,4 +207,54 @@ public class AnalyticsController {
 
         return ResponseEntity.ok(result);
     }
+<<<<<<< HEAD
+=======
+
+    // ── Top clicked links ─────────────────────────────────────────────────────
+
+    /**
+     * GET /me/analytics/top-links?days=30&limit=10
+     *
+     * Extracts link URL and title from the JSONB meta column of LINK_CLICK events,
+     * groups by (url, title), and returns them ranked by click count descending.
+     *
+     * meta JSON structure expected: { "url": "https://...", "title": "LinkedIn" }
+     */
+    @GetMapping("/me/analytics/top-links")
+    public ResponseEntity<?> topLinks(
+            @AuthenticationPrincipal String principal,
+            @RequestParam(name = "days", defaultValue = "30") int days,
+            @RequestParam(name = "limit", defaultValue = "10") int limit) {
+
+        Long profileId = getProfileId(principal);
+        if (profileId == null) {
+            return ResponseEntity.ok(List.of());
+        }
+
+        Instant since = Instant.now().minus(days, ChronoUnit.DAYS);
+
+        // PostgreSQL JSONB extraction. Falls back gracefully if meta is null or not
+        // parseable.
+        String sql = """
+                SELECT
+                    COALESCE(meta::json->>'url',   'unknown') AS url,
+                    COALESCE(meta::json->>'title', 'Link')    AS title,
+                    COUNT(*)                                   AS clicks
+                FROM analytics_events
+                WHERE profile_id = ?
+                  AND event_type = 'LINK_CLICK'
+                  AND occurred_at >= ?
+                  AND meta IS NOT NULL
+                GROUP BY url, title
+                ORDER BY clicks DESC
+                LIMIT ?
+                """;
+
+        List<Map<String, Object>> rows = jdbc.queryForList(sql, profileId, since, limit);
+
+        log.info("[ANALYTICS] GET /me/analytics/top-links — profileId={} days={} rows={}", profileId, days,
+                rows.size());
+        return ResponseEntity.ok(rows);
+    }
+>>>>>>> 82aa1f0 (Initial commit)
 }

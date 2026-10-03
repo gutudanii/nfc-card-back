@@ -1,0 +1,9 @@
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/service/OrganizationService.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/OrganizationsController.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/repo/OrganizationMemberRepository.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/repo/OrganizationRepository.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/security/AccessGuard.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/model/Team.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/repo/TeamRepository.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/model/Organization.java
+/Users/gutudanielgeleta/Documents/NFC/nfc-backend/organizations/src/main/java/com/toollix/organizations/model/OrganizationMember.java

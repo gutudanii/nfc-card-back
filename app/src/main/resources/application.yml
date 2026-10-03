@@ -38,10 +38,29 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+<<<<<<< HEAD
 
 mail:
   enabled: ${MAIL_ENABLED:false}
   from: ${MAIL_FROM:no-reply@toollix.app}
+=======
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:contact.toollix@gmail.com}
+    password: ${MAIL_PASSWORD:htbb mrif jcjn vjuu}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+mail:
+  enabled: ${MAIL_ENABLED:true}
+  from: ${MAIL_FROM:contact.toollix@gmail.com}
+  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+>>>>>>> 82aa1f0 (Initial commit)
 
 logging:
   level:

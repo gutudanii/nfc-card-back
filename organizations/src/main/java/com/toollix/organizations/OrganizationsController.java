@@ -45,15 +45,31 @@ public class OrganizationsController {
     private final OrganizationRepository repo;
     private final OrganizationMemberRepository memberRepo;
     private final FileStorageService storageService;
+<<<<<<< HEAD
+=======
+    private final com.toollix.common.mail.EmailService emailService;
+    private final org.springframework.jdbc.core.JdbcTemplate jdbc;
+>>>>>>> 82aa1f0 (Initial commit)
 
     public OrganizationsController(OrganizationService service,
             OrganizationRepository repo,
             OrganizationMemberRepository memberRepo,
+<<<<<<< HEAD
             FileStorageService storageService) {
+=======
+            FileStorageService storageService,
+            com.toollix.common.mail.EmailService emailService,
+            org.springframework.jdbc.core.JdbcTemplate jdbc) {
+>>>>>>> 82aa1f0 (Initial commit)
         this.service = service;
         this.repo = repo;
         this.memberRepo = memberRepo;
         this.storageService = storageService;
+<<<<<<< HEAD
+=======
+        this.emailService = emailService;
+        this.jdbc = jdbc;
+>>>>>>> 82aa1f0 (Initial commit)
     }
 
     // ─── Create org ───────────────────────────────────────────────────────────
@@ -82,9 +98,32 @@ public class OrganizationsController {
     public ResponseEntity<?> myOrgs(@AuthenticationPrincipal String principal) {
         Long callerId = Long.parseLong(principal);
         var memberships = memberRepo.findByUserIdAndStatus(callerId, "ACTIVE");
+<<<<<<< HEAD
         var orgIds = memberships.stream().map(OrganizationMember::getOrgId).toList();
         var orgs = repo.findAllById(orgIds);
         return ResponseEntity.ok(orgs);
+=======
+
+        var results = memberships.stream().map(m -> {
+            var org = repo.findById(m.getOrgId()).orElse(null);
+            if (org == null)
+                return null;
+            return Map.of(
+                    "org", org,
+                    "role", m.getRole());
+        }).filter(java.util.Objects::nonNull).toList();
+
+        return ResponseEntity.ok(results);
+    }
+
+    // ─── Public org lookup by slug (no auth) ─────────────────────────────────
+
+    @GetMapping("/public/{slug}")
+    public ResponseEntity<?> getBySlug(@PathVariable("slug") String slug) {
+        return repo.findBySlug(slug)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+>>>>>>> 82aa1f0 (Initial commit)
     }
 
     // ─── Get org by ID ────────────────────────────────────────────────────────
@@ -174,6 +213,52 @@ public class OrganizationsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(member);
     }
 
+<<<<<<< HEAD
+=======
+    @PostMapping("/{orgId}/invite")
+    public ResponseEntity<?> inviteMember(
+            @PathVariable("orgId") Long orgId,
+            @Valid @RequestBody InviteRequest req,
+            @AuthenticationPrincipal String principal) {
+        Long callerId = Long.parseLong(principal);
+        if (!service.isAdminOrOwner(orgId, callerId))
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", "Requires ADMIN or OWNER role"));
+
+        var org = repo.findById(orgId).orElseThrow();
+
+        // 1. Check if user exists
+        Long existingUserId = null;
+        try {
+            existingUserId = jdbc.queryForObject("SELECT id FROM users WHERE email = ?", Long.class, req.email());
+        } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+            // User doesn't exist
+        }
+
+        if (existingUserId != null) {
+            // Already exists -> just add them to the org
+            try {
+                service.addMember(orgId, existingUserId, req.role(), null);
+            } catch (Exception e) {
+                // Ignore if already a member
+            }
+        } else {
+            // Log that user does not exist (we don't block invitation, just notify)
+            // They can create an account and join later via invite flow (or we can
+            // auto-create the shell account).
+            log.info("[ORGS_CTRL] Invite sent to non-existent user email={}", req.email());
+        }
+
+        // Use the proper callback URL so it hits the specific organization page.
+        String inviteLink = "http://localhost:3000/login?callbackUrl=/org/" + orgId;
+        emailService.sendOrganizationInvitation(req.email(), org.getName(), req.role() != null ? req.role() : "MEMBER",
+                inviteLink);
+
+        log.info("[ORGS_CTRL] POST /orgs/{}/invite — emailed {} role={} by callerId={}", orgId, req.email(), req.role(),
+                callerId);
+        return ResponseEntity.ok(Map.of("message", "Invitation sent successfully"));
+    }
+
+>>>>>>> 82aa1f0 (Initial commit)
     @DeleteMapping("/{orgId}/members/{userId}")
     public ResponseEntity<?> removeMember(@PathVariable("orgId") Long orgId,
             @PathVariable("userId") Long userId,
@@ -234,6 +319,12 @@ public class OrganizationsController {
     public record AddMemberRequest(@NotNull Long userId, String role, String department) {
     }
 
+<<<<<<< HEAD
+=======
+    public record InviteRequest(@NotBlank String email, String role) {
+    }
+
+>>>>>>> 82aa1f0 (Initial commit)
     public record RoleRequest(@NotBlank String role) {
     }
 

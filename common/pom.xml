@@ -35,6 +35,13 @@
       <artifactId>spring-boot-starter-data-redis</artifactId>
     </dependency>
     <dependency>
+<<<<<<< HEAD
+=======
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+    <dependency>
+>>>>>>> 82aa1f0 (Initial commit)
       <groupId>com.nimbusds</groupId>
       <artifactId>nimbus-jose-jwt</artifactId>
       <version>9.31</version>

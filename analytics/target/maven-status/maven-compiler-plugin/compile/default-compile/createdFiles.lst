@@ -1,0 +1,4 @@
+com/toollix/analytics/model/AnalyticsEvent.class
+com/toollix/analytics/AnalyticsController.class
+com/toollix/analytics/repo/AnalyticsEventRepository.class
+com/toollix/analytics/worker/AnalyticsWorker.class

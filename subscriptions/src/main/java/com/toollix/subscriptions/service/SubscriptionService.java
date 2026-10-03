@@ -70,17 +70,31 @@ public class SubscriptionService {
     /**
      * Verifies by txRef (used by Chapa callback). Falls back to subscriptionId
      * lookup.
+<<<<<<< HEAD
+=======
+     * On success:
+     * 1. Marks the subscription ACTIVE with an expiry (30 days for monthly, 365 for
+     * annual/default).
+     * 2. Supersedes any previously ACTIVE subscriptions for the same subject so
+     * only one is live.
+     * 3. Records a detailed audit trail.
+>>>>>>> 82aa1f0 (Initial commit)
      */
     public boolean verifyCheckout(String txRef, Long subscriptionId) {
         log.info("[SUBSCRIPTION_SVC] verifyCheckout txRef={} subId={}", txRef, subscriptionId);
         boolean isSuccess = chapaPaymentService.verifyChapaPayment(txRef);
 
         if (isSuccess) {
+<<<<<<< HEAD
             // Try to find by txRef first (more reliable), fall back to id
+=======
+            // Resolve subscription — txRef is more reliable (immutable after creation)
+>>>>>>> 82aa1f0 (Initial commit)
             Optional<Subscription> subOpt = repo.findByTxRef(txRef);
             Subscription s = subOpt.orElseGet(() -> repo.findById(subscriptionId)
                     .orElseThrow(() -> new RuntimeException("Subscription not found: " + subscriptionId)));
 
+<<<<<<< HEAD
             s.setStatus("ACTIVE");
             s.setActivatedAt(Instant.now());
             // Grant 1-year expiry for annual plan, 30 days for monthly
@@ -93,6 +107,42 @@ public class SubscriptionService {
             log.info("[SUBSCRIPTION_SVC] Subscription {} activated for userId={}", s.getId(), s.getSubjectId());
             return true;
         }
+=======
+            // Supersede any existing ACTIVE subscriptions for the same subject
+            List<Subscription> existing = repo.findBySubjectTypeAndSubjectIdOrderByIdDesc(
+                    s.getSubjectType(), s.getSubjectId());
+            for (Subscription prev : existing) {
+                if (prev.getId().equals(s.getId()))
+                    continue;
+                if ("ACTIVE".equals(prev.getStatus())) {
+                    prev.setStatus("SUPERSEDED");
+                    repo.save(prev);
+                    log.info("[SUBSCRIPTION_SVC] Superseded old subscription id={}", prev.getId());
+                }
+            }
+
+            // Determine expiry: planId 1 = monthly (30d), everything else = annual (365d)
+            long durationDays = (s.getPlanId() != null && s.getPlanId() == 1L) ? 30L : 365L;
+
+            s.setStatus("ACTIVE");
+            s.setActivatedAt(Instant.now());
+            s.setExpiresAt(Instant.now().plus(durationDays, ChronoUnit.DAYS));
+            repo.save(s);
+
+            try {
+                auditService.record("subscription.activate", "system",
+                        String.format("subId=%d txRef=%s subject=%s/%d expiresInDays=%d",
+                                s.getId(), txRef, s.getSubjectType(), s.getSubjectId(), durationDays));
+            } catch (Exception ignored) {
+            }
+
+            log.info("[SUBSCRIPTION_SVC] ✅ Activated subId={} subject={}/{} durationDays={}",
+                    s.getId(), s.getSubjectType(), s.getSubjectId(), durationDays);
+            return true;
+        }
+
+        log.warn("[SUBSCRIPTION_SVC] ❌ Chapa verification failed for txRef={}", txRef);
+>>>>>>> 82aa1f0 (Initial commit)
         return false;
     }
 

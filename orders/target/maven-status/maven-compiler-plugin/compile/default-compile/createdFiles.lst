@@ -1,0 +1,5 @@
+com/toollix/orders/model/Order.class
+com/toollix/orders/service/OrderService.class
+com/toollix/orders/OrdersController$CreateOrderRequest.class
+com/toollix/orders/OrdersController.class
+com/toollix/orders/repo/OrderRepository.class

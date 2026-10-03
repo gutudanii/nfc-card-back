@@ -1,0 +1,13 @@
+com/toollix/profiles/model/PortfolioItem.class
+com/toollix/profiles/ProfileController.class
+com/toollix/profiles/PortfolioController.class
+com/toollix/profiles/ProfileController$LinkRequest.class
+com/toollix/profiles/repo/PortfolioItemRepository.class
+com/toollix/profiles/repo/ProfileRepository.class
+com/toollix/profiles/ProfileController$VisibilityRequest.class
+com/toollix/profiles/repo/ContactLinkRepository.class
+com/toollix/profiles/service/ProfileService.class
+com/toollix/profiles/ProfileController$ProfileUpdate.class
+com/toollix/profiles/model/ContactLink.class
+com/toollix/profiles/PortfolioController$PortfolioItemRequest.class
+com/toollix/profiles/model/Profile.class

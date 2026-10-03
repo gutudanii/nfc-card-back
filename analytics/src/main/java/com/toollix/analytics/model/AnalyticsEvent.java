@@ -62,4 +62,11 @@ public class AnalyticsEvent {
     public void setEventType(String eventType) {
         this.eventType = eventType;
     }
+<<<<<<< HEAD
+=======
+
+    public void setMeta(String meta) {
+        this.meta = meta;
+    }
+>>>>>>> 82aa1f0 (Initial commit)
 }

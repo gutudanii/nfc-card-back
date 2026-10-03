@@ -3,6 +3,11 @@ package com.toollix.organizations.security;
 import com.toollix.organizations.repo.OrganizationMemberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+<<<<<<< HEAD
+=======
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+>>>>>>> 82aa1f0 (Initial commit)
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -27,9 +32,17 @@ public class AccessGuard {
     private static final Logger log = LoggerFactory.getLogger(AccessGuard.class);
 
     private final OrganizationMemberRepository memberRepo;
+<<<<<<< HEAD
 
     public AccessGuard(OrganizationMemberRepository memberRepo) {
         this.memberRepo = memberRepo;
+=======
+    private final JdbcTemplate jdbc;
+
+    public AccessGuard(OrganizationMemberRepository memberRepo, JdbcTemplate jdbc) {
+        this.memberRepo = memberRepo;
+        this.jdbc = jdbc;
+>>>>>>> 82aa1f0 (Initial commit)
     }
 
     public boolean canEditProfile(Long profileId, Authentication auth) {
@@ -77,10 +90,34 @@ public class AccessGuard {
 
     public boolean isPlatformAdmin(Authentication auth) {
         Long callerId = extractUserId(auth);
+<<<<<<< HEAD
         if (callerId == null)
             return false;
         log.debug("[ACCESS_GUARD] isPlatformAdmin called for callerId={} — requires UserRepository impl", callerId);
         return false;
+=======
+        System.out.println("[ACCESS_GUARD_DEBUG] isPlatformAdmin check for callerId=" + callerId);
+        if (callerId == null)
+            return false;
+
+        try {
+            String role = jdbc.queryForObject("SELECT platform_role FROM users WHERE id = ?", String.class, callerId);
+            System.out.println("[ACCESS_GUARD_DEBUG] DB returned platform_role=" + role + " for callerId=" + callerId);
+
+            boolean isAdmin = role != null && (role.equals("SUPER_ADMIN") ||
+                    role.equals("SUPPORT_ADMIN") ||
+                    role.equals("OPERATIONS_ADMIN"));
+            System.out.println("[ACCESS_GUARD_DEBUG] isAdmin evaluates to " + isAdmin);
+            return isAdmin;
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println("[ACCESS_GUARD_DEBUG] EmptyResultDataAccessException for callerId=" + callerId);
+            return false;
+        } catch (Exception e) {
+            System.out.println("[ACCESS_GUARD_DEBUG] Exception: " + e.getMessage());
+            log.error("[ACCESS_GUARD] isPlatformAdmin DB error callerId={}: {}", callerId, e.getMessage());
+            return false;
+        }
+>>>>>>> 82aa1f0 (Initial commit)
     }
 
     public boolean isOrgMember(Long orgId, Authentication auth) {

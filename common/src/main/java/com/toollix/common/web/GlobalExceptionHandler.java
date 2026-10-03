@@ -21,12 +21,23 @@ import java.util.stream.Collectors;
  * All uncaught exceptions are caught here, logged at the appropriate level,
  * and mapped to a consistent JSON error envelope:
  *
+<<<<<<< HEAD
  *   { "status": 400, "error": "email_taken", "path": "/auth/register", "timestamp": "..." }
  *
  * Design rules:
  *  - 4xx errors → WARN log (client mistake, not our bug)
  *  - 5xx errors → ERROR log with full stack trace
  *  - We NEVER expose internal stack traces or raw Java exception messages to callers.
+=======
+ * { "status": 400, "error": "email_taken", "path": "/auth/register",
+ * "timestamp": "..." }
+ *
+ * Design rules:
+ * - 4xx errors → WARN log (client mistake, not our bug)
+ * - 5xx errors → ERROR log with full stack trace
+ * - We NEVER expose internal stack traces or raw Java exception messages to
+ * callers.
+>>>>>>> 82aa1f0 (Initial commit)
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -71,7 +82,12 @@ public class GlobalExceptionHandler {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
     // Bad argument (legacy usage inside services — prefer ApiException going forward)
+=======
+    // Bad argument (legacy usage inside services — prefer ApiException going
+    // forward)
+>>>>>>> 82aa1f0 (Initial commit)
     // ─────────────────────────────────────────────────────────────────────────
 
     @ExceptionHandler(IllegalArgumentException.class)
@@ -97,6 +113,18 @@ public class GlobalExceptionHandler {
     // Always ERROR-level with full stack
     // ─────────────────────────────────────────────────────────────────────────
 
+<<<<<<< HEAD
+=======
+    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+    public ResponseEntity<?> handleSpringSecurityAccessDenied(
+            org.springframework.security.access.AccessDeniedException ex, HttpServletRequest req) {
+        log.warn("[ACCESS_DENIED] {} tried to access {} but was blocked.", req.getRemoteUser(), req.getRequestURI());
+        return ResponseEntity
+                .status(HttpStatus.FORBIDDEN)
+                .body(errorBody(403, "access_denied", req));
+    }
+
+>>>>>>> 82aa1f0 (Initial commit)
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGeneric(Exception ex, HttpServletRequest req) {
         log.error("[UNHANDLED] Unexpected exception at {} — {}", req.getRequestURI(), ex.getMessage(), ex);
@@ -120,6 +148,12 @@ public class GlobalExceptionHandler {
 
     /** Convenience exception for programmatic 403 throws in service layer. */
     public static class AccessDeniedException extends RuntimeException {
+<<<<<<< HEAD
         public AccessDeniedException(String reason) { super(reason); }
+=======
+        public AccessDeniedException(String reason) {
+            super(reason);
+        }
+>>>>>>> 82aa1f0 (Initial commit)
     }
 }

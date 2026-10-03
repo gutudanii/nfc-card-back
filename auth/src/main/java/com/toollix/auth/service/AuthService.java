@@ -49,13 +49,22 @@ public class AuthService {
     private final AuditService auditService;
     private final long refreshTokenSeconds;
     private final long verificationSeconds;
+<<<<<<< HEAD
+=======
+    private final org.springframework.jdbc.core.JdbcTemplate jdbc;
+>>>>>>> 82aa1f0 (Initial commit)
 
     public AuthService(JwtTokenProvider jwtTokenProvider, UserSessionRepository sessionRepo,
             UserRepository userRepo, PasswordEncoder passwordEncoder,
             VerificationTokenRepository verificationRepo, EmailService emailService,
             AuditService auditService,
             @Value("${security.jwt.refresh-token-seconds:2592000}") long refreshTokenSeconds,
+<<<<<<< HEAD
             @Value("${auth.verification-seconds:86400}") long verificationSeconds) {
+=======
+            @Value("${auth.verification-seconds:86400}") long verificationSeconds,
+            org.springframework.jdbc.core.JdbcTemplate jdbc) {
+>>>>>>> 82aa1f0 (Initial commit)
         this.jwtTokenProvider = jwtTokenProvider;
         this.sessionRepo = sessionRepo;
         this.userRepo = userRepo;
@@ -65,6 +74,10 @@ public class AuthService {
         this.auditService = auditService;
         this.refreshTokenSeconds = refreshTokenSeconds;
         this.verificationSeconds = verificationSeconds;
+<<<<<<< HEAD
+=======
+        this.jdbc = jdbc;
+>>>>>>> 82aa1f0 (Initial commit)
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -140,6 +153,63 @@ public class AuthService {
     }
 
     // ─────────────────────────────────────────────────────────────────────────
+<<<<<<< HEAD
+=======
+    // Password Reset
+    // ─────────────────────────────────────────────────────────────────────────
+
+    public void forgotPassword(String email) {
+        log.info("[AUTH] forgotPassword — email={}", email);
+        User user = userRepo.findByEmail(email).orElse(null);
+        if (user == null) {
+            log.info("[AUTH] forgotPassword — email not found (silently returning to prevent enumeration)");
+            return;
+        }
+
+        String token = UUID.randomUUID().toString();
+        // Expires in 1 hour
+        Instant expiresAt = Instant.now().plusSeconds(3600);
+
+        jdbc.update("INSERT INTO password_reset_tokens (user_id, token, expires_at) VALUES (?, ?, ?)",
+                user.getId(), token, java.sql.Timestamp.from(expiresAt));
+
+        try {
+            emailService.sendPasswordReset(email, token);
+            log.info("[AUTH] forgotPassword — reset email sent to {}", email);
+        } catch (Exception e) {
+            log.error("[AUTH] forgotPassword — failed to send reset email to {}: {}", email, e.getMessage());
+        }
+    }
+
+    public void resetPassword(String token, String newPassword) {
+        log.info("[AUTH] resetPassword — token={}", token.substring(0, Math.min(8, token.length())) + "...");
+
+        List<java.util.Map<String, Object>> records = jdbc.queryForList(
+                "SELECT * FROM password_reset_tokens WHERE token = ? AND used = FALSE AND expires_at > NOW()",
+                token);
+
+        if (records.isEmpty()) {
+            log.warn("[AUTH] resetPassword — invalid, expired, or already used token");
+            throw new IllegalArgumentException("invalid_token");
+        }
+
+        Long userId = ((Number) records.get(0).get("user_id")).longValue();
+        Long tokenId = ((Number) records.get(0).get("id")).longValue();
+
+        User user = userRepo.findById(userId).orElseThrow(() -> new IllegalArgumentException("user_not_found"));
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        userRepo.save(user);
+
+        jdbc.update("UPDATE password_reset_tokens SET used = TRUE WHERE id = ?", tokenId);
+
+        // Revoke all existing sessions for security
+        jdbc.update("UPDATE user_sessions SET revoked = TRUE WHERE user_id = ?", userId);
+
+        log.info("[AUTH] resetPassword — password reset & sessions revoked for userId={}", userId);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+>>>>>>> 82aa1f0 (Initial commit)
     // Login
     // ─────────────────────────────────────────────────────────────────────────
 

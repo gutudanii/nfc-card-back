@@ -1,0 +1,15 @@
+com/toollix/auth/service/AuthService$LoginResult.class
+com/toollix/auth/controller/AuthController$LoginRequest.class
+com/toollix/auth/controller/AuthController$LoginResponse.class
+com/toollix/auth/model/VerificationToken.class
+com/toollix/auth/controller/AuthController$RefreshRequest.class
+com/toollix/auth/dto/SessionDto.class
+com/toollix/auth/model/UserSession.class
+com/toollix/auth/controller/AuthController$RegisterRequest.class
+com/toollix/auth/controller/AuthController$ForgotPasswordRequest.class
+com/toollix/auth/controller/AuthController.class
+com/toollix/auth/service/AuthService.class
+com/toollix/auth/repo/UserSessionRepository.class
+com/toollix/auth/controller/AuthController$ResetPasswordRequest.class
+com/toollix/auth/repo/VerificationTokenRepository.class
+com/toollix/auth/controller/AuthController$VerifyRequest.class
