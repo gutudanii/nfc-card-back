@@ -33,7 +33,7 @@ public class ChapaPaymentService {
 
     public ChapaPaymentService(
             @Value("${chapa.secret-key:CHASECK-x3BrKZLcg0Pbz9CNMuwYDlqU6LdJccPd}") String chapaSecretKey,
-            @Value("${chapa.return-url:http://localhost:3000/dashboard/billing/verify}") String returnUrl) {
+            @Value("${chapa.return-url:https://cards.toollix.app/dashboard/billing/verify}") String returnUrl) {
         this.chapaSecretKey = chapaSecretKey;
         this.returnUrl = returnUrl;
     }

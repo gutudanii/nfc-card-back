@@ -24,7 +24,7 @@ public class SmtpEmailService implements EmailService {
     public SmtpEmailService(
             JavaMailSender mailSender,
             @Value("${mail.from:contact.toollix@gmail.com}") String from,
-            @Value("${mail.frontend-url:http://localhost:3000}") String frontendUrl) {
+            @Value("${mail.frontend-url:https://cards.toollix.com}") String frontendUrl) {
         this.mailSender = mailSender;
         this.from = from;
         this.frontendUrl = frontendUrl;

@@ -231,7 +231,7 @@ public class OrganizationsController {
         }
 
         // Use the proper callback URL so it hits the specific organization page.
-        String inviteLink = "http://localhost:3000/login?callbackUrl=/org/" + orgId;
+        String inviteLink = "https://cards.toollix.app/login?callbackUrl=/org/" + orgId;
         emailService.sendOrganizationInvitation(req.email(), org.getName(), req.role() != null ? req.role() : "MEMBER",
                 inviteLink);
 

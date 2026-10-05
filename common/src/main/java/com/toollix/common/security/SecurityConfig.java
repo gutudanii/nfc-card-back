@@ -26,7 +26,7 @@ public class SecurityConfig {
      * box.
      * In production, set: security.cors.allowed-origins=https://cards.toollix.app
      */
-    @Value("${security.cors.allowed-origins:http://localhost:3000,http://localhost:3001}")
+    @Value("${security.cors.allowed-origins:http://localhost:3000,http://localhost:3001,https://cards.toollix.com}")
     private List<String> allowedOrigins;
 
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
